@@ -1,6 +1,10 @@
 import React from 'react'
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
+import IconChat from "../../assets/img/icon-chat.png";
+import IconMoney from "../../assets/img/icon-money.png";
+import IconSecurity from "../../assets/img/icon-security.png"
+
 
 const Home = () => {
   return (
@@ -19,7 +23,7 @@ const Home = () => {
       <section class="features">
         <h2 class="sr-only">Features</h2>
         <div class="feature-item">
-          <img src="./img/icon-chat.png" alt="Chat Icon" class="feature-icon" />
+          <img src={IconChat} alt="Chat Icon" class="feature-icon" />
           <h3 class="feature-item-title">You are our #1 priority</h3>
           <p>
             Need to talk to a representative? You can get in touch through our
@@ -28,7 +32,7 @@ const Home = () => {
         </div>
         <div class="feature-item">
           <img
-            src="./img/icon-money.png"
+            src={IconMoney}
             alt="Chat Icon"
             class="feature-icon"
           />
@@ -39,7 +43,7 @@ const Home = () => {
         </div>
         <div class="feature-item">
           <img
-            src="./img/icon-security.png"
+            src={IconSecurity}
             alt="Chat Icon"
             class="feature-icon"
           />

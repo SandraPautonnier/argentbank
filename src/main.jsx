@@ -7,6 +7,9 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
+import { Provider } from 'react-redux';
+import store from '../src/redux/store'
+import User from './pages/User';
 
 const router = createBrowserRouter([
   {
@@ -17,11 +20,17 @@ const router = createBrowserRouter([
     path: "/login",
     element: <SignIn />,
   },
+  {
+    path: "/profile",
+    element: <User />,
+  },
   
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>,
 )

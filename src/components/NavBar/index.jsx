@@ -4,18 +4,18 @@ import ArgentBankLogo from "../../assets/img/argentBankLogo.png";
 
 const NavBar = () => {
   return (
-        <nav class="main-nav">
-      <a class="main-nav-logo" href="./index.html">
+        <nav className="main-nav">
+      <a className="main-nav-logo" href="./index.html">
         <img
-          class="main-nav-logo-image"
+          className="main-nav-logo-image"
           src={ArgentBankLogo}
           alt="Argent Bank Logo"
         />
-        <h1 class="sr-only">Argent Bank</h1>
+        <h1 className="sr-only">Argent Bank</h1>
       </a>
       <div>
         <Link className="main-nav-item" to={'/login'}>
-          <i class="fa fa-user-circle"></i>
+          <i className="fa fa-user-circle"></i>
           Sign In
         </Link>
       </div>

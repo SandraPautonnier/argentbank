@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../redux/authSlice';
 import NavBar from '../../components/NavBar';
@@ -11,6 +11,7 @@ const SignIn = () => {
   const [remember, setRemember] = useState(false);
   
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (event, type) => {
     switch (type) {
@@ -62,13 +63,14 @@ const SignIn = () => {
             remember,
           })
         );
-  
-        return <Navigate to="/profile"/>
+        navigate('/profile');
+        
       }
     } catch (erreur) {
       console.error("Erreur :", erreur);
     }
   };
+
 
   return (
     <div>

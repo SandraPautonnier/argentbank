@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../../redux/authSlice';
+import { loginSuccess } from '../../redux/userSlice';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 
 const SignIn = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(false);
   
@@ -15,8 +15,8 @@ const SignIn = () => {
 
   const handleChange = (event, type) => {
     switch (type) {
-      case 'username':
-        setUsername(event.target.value.trim());
+      case 'email':
+        setEmail(event.target.value.trim());
         break;
       case 'password':
         setPassword(event.target.value.trim());
@@ -31,8 +31,8 @@ const SignIn = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!username || !password) {
-      alert("Veuillez remplir les champs");
+    if (!email || !password) {
+      alert("Veuillez remplir tous les champs");
       return;
     };
   
@@ -40,7 +40,7 @@ const SignIn = () => {
       const reponse = await fetch("http://localhost:3001/api/v1/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: username, password: password }),
+        body: JSON.stringify({ email: email, password: password }),
       });
 
       const data = await reponse.json();
@@ -85,8 +85,8 @@ const SignIn = () => {
               <input
                 type="text"
                 id="username"
-                onChange={(event) => handleChange(event, 'username')}
-                value={username}
+                onChange={(event) => handleChange(event, 'email')}
+                value={email}
               />
             </div>
             <div className="input-wrapper">

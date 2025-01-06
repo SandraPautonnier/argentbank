@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate, Navigate, Link  } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../redux/authSlice';
+import { logout } from '../../redux/userSlice';
 import ArgentBankLogo from "../../assets/img/argentBankLogo.png";
 
 const NavBar = () => {
 
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,14 +14,6 @@ const NavBar = () => {
     dispatch(logout()); // Appelle l'action de déconnexion
     navigate('/login');
   };
-
-  /* if (loginSuccess) {
-      return <Navigate to="/profile"/>
-  } else {
-    return <Navigate to="/Home"/>
-  }; */
-
-
 
   return (
         <nav className="main-nav">

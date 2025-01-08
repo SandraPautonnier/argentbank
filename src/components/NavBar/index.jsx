@@ -15,9 +15,6 @@ const NavBar = () => {
     navigate('/');
   };
 
-
-
-
   return (
         <nav className="main-nav">
           <Link className="main-nav-logo" onClick={handleLogout}>

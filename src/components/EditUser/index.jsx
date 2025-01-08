@@ -1,32 +1,63 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { userProfile, updateUserName } from "../../redux/userSlice";
 
 const EditUser = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const { userName, firstName, lastName } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
   const [tempUserName, setTempUserName] = useState(userName);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    setTempUserName(e.target.value);
-  };
-
-  const handleSave = async () => {
-    setLoading(true);
-    setError("");
-
+  // Pour afficher les données utilisateur
+  const userInfo = async () => {
     const token = localStorage.getItem("token");
-
     if (!token) {
       setError("Token is missing");
       setLoading(false);
       return;
     }
+    try {
+      const response = await fetch("http://localhost:3001/api/v1/user/profile", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
 
+      const userName = data.body?.userName;
+      const firstName = data.body?.firstName;
+      const lastName = data.body?.lastName;
+      dispatch(userProfile({ userName, lastName, firstName }))
+
+      //console.log(dataInfo);
+    } catch (error) {
+      console.error("Erreur :", error);
+    }
+  };
+
+  userInfo();
+
+  // Pour modifier le nom d'utilisateur
+  const handleChange = (e) => {
+    setTempUserName(e.target.value);
+  };
+  const handleSave = async () => {
+    setLoading(true);
+    setError("");
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("Token is missing");
+      setLoading(false);
+      return;
+    }
     try {
       const response = await fetch("http://localhost:3001/api/v1/user/profile", {
         method: "PUT",
@@ -36,13 +67,11 @@ const EditUser = () => {
         },
         body: JSON.stringify({ userName: tempUserName }),
       });
-
       const data = await response.json();
-
       if (response.ok) {
         dispatch(updateUserName({ userName: tempUserName }));
-        alert("User Name updated successfully!");
-        setIsOpen(false);
+        alert("Nom d'utilisateur modifié avec succès !");
+        setIsOpen(false); // Referme le mode modification
       } else {
         throw new Error(data.message || "An error occurred");
       }
@@ -52,7 +81,6 @@ const EditUser = () => {
       setLoading(false);
     }
   };
-
   const handleCancel = () => {
     alert("Les informations seront perdues !");
     setIsOpen(false);
@@ -64,7 +92,7 @@ const EditUser = () => {
         <>
           <h1>
             Welcome back <br />
-            {firstName} {lastName}
+            {userName}
           </h1>
           <div>
             <button className="edit-button" onClick={() => setIsOpen(true)}>
@@ -93,7 +121,6 @@ const EditUser = () => {
             </button>
             <button onClick={handleCancel}>Cancel</button>
           </div>
-          {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
       )}
     </div>

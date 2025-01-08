@@ -40,23 +40,16 @@ const SignIn = () => {
       const reponse = await fetch("http://localhost:3001/api/v1/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email : email, password: password }),
       });
 
       const data = await reponse.json();
   
       if (reponse.ok) {
         const token = data.body?.token;
-        
-        //localStorage.setItem('token', token);
-        
+ 
         //console.log("data :", data);
-        console.log("token :", token);
-        
-
-        /* if (remember) {
-          sessionStorage.setItem('token', token);
-        } */
+        //console.log("token :", token);
         
         dispatch(
           loginSuccess({

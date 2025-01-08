@@ -94,6 +94,7 @@ body {
   padding: 2rem;
   text-align: left;
   margin: 0 auto;
+  border-radius: 5px;
 }
 
 .hero-content .subtitle {
@@ -170,6 +171,9 @@ body {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+  cursor: pointer;
+  border-width: 0;
+  border-radius: 5px;
 }
 
 .sign-in-content {
@@ -259,12 +263,51 @@ body {
   flex: 1;
 }
 
+.edit-user-content {
+  margin: auto;
+  max-width: 300px;
+  gap: 20px;
+}
+
+.edit-user-content label {
+  margin: 10px 10px;
+}
+
+.edit-user-content input {
+  height: 25px;
+  margin: 10px 10px;
+  
+}
+
+.buttons-save-cancel {
+  display: flex;
+  gap: 20px;
+}
+
+.save-cancel-button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  border-width: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
 .edit-button {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
   font-weight: bold;
   padding: 10px;
+  border-width: 0;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .header {
@@ -282,6 +325,9 @@ body {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+  border-radius: 5px;
+  border-width: 0;
+  cursor: pointer;
 }
 
 @media (min-width: 720px) {

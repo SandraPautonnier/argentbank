@@ -48,11 +48,18 @@ const EditUser = () => {
   // Pour modifier le nom d'utilisateur
   const handleChange = (e) => {
     setTempUserName(e.target.value);
+    setError("");
   };
   const handleSave = async () => {
     setLoading(true);
     setError("");
     const token = localStorage.getItem("token");
+    // Validation pour vérifier si le champ est vide
+    if (tempUserName.trim() === "") {
+      alert("Le nom d'utilisateur ne peut pas être vide !");
+      setLoading(false);
+      return;
+    }
     if (!token) {
       setError("Token is missing");
       setLoading(false);
@@ -101,7 +108,7 @@ const EditUser = () => {
           </div>
         </>
       ) : (
-        <div>
+        <div className="edit-user-content">
           <h2>Edit user info</h2>
           <div>
             <label>User Name</label>
@@ -115,11 +122,11 @@ const EditUser = () => {
             <label>Last Name</label>
             <input type="text" value={lastName} disabled />
           </div>
-          <div>
-            <button onClick={handleSave} disabled={loading}>
+          <div className="buttons-save-cancel">
+            <button className="save-cancel-button" onClick={handleSave} disabled={loading}>
               {loading ? "Saving..." : "Save"}
             </button>
-            <button onClick={handleCancel}>Cancel</button>
+            <button className="save-cancel-button" onClick={handleCancel}>Cancel</button>
           </div>
         </div>
       )}

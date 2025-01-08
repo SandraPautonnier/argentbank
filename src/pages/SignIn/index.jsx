@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../../redux/userSlice';
+import { loginSuccess } from '../../redux/authSlice';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 
@@ -40,7 +40,7 @@ const SignIn = () => {
       const reponse = await fetch("http://localhost:3001/api/v1/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email, password: password }),
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await reponse.json();
@@ -48,14 +48,15 @@ const SignIn = () => {
       if (reponse.ok) {
         const token = data.body?.token;
         
-        localStorage.setItem('token', token);
+        //localStorage.setItem('token', token);
         
         //console.log("data :", data);
-        //console.log("token :", token);
+        console.log("token :", token);
+        
 
-        if (remember) {
+        /* if (remember) {
           sessionStorage.setItem('token', token);
-        }
+        } */
         
         dispatch(
           loginSuccess({
@@ -84,7 +85,7 @@ const SignIn = () => {
               <label htmlFor="username">Username</label>
               <input
                 type="text"
-                id="username"
+                id="email"
                 onChange={(event) => handleChange(event, 'email')}
                 value={email}
               />

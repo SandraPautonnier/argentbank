@@ -1,9 +1,15 @@
 import React from 'react'
+import { Navigate } from 'react-router-dom';
+import { loginSuccess } from '../../redux/authSlice';
 import EditUser from '../../components/EditUser'
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
 
 const User = () => {
+
+  if (!loginSuccess) {
+    return <Navigate to='/login' />
+  }
 
   return (
     <div>

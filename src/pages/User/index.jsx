@@ -5,6 +5,7 @@ import EditUser from '../../components/EditUser'
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
 
+
 const User = () => {
 
   if (!loginSuccess) {
@@ -12,7 +13,7 @@ const User = () => {
   }
 
   return (
-    <div>
+    <div className='content-body'>
       <NavBar />
       <main className="main bg-dark">
         <EditUser />

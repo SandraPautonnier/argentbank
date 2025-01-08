@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../redux/authSlice';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -67,15 +69,15 @@ const SignIn = () => {
 
 
   return (
-    <div>
+    <div className='content-body'>
       <NavBar />
       <main className="main bg-dark">
         <section className="sign-in-content">
-          <i className="fa fa-user-circle sign-in-icon"></i>
+          <FontAwesomeIcon className='sign-in-icon' icon={faUserCircle} />
           <h1>Sign In</h1>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="Email">Email</label>
               <input
                 type="text"
                 id="email"

@@ -14,6 +14,12 @@ body {
   min-height: 100vh;
 }
 
+.content-body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .main {
   flex: 1;
 }
@@ -72,7 +78,7 @@ body {
 }
 
 .hero {
-  background-image: url('../img/bank-tree.jpeg');
+  background-image: url('../src/assets/img/bank-tree.jpeg');
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -173,10 +179,11 @@ body {
   margin: 0 auto;
   margin-top: 3rem;
   padding: 2rem;
+  border-radius: 5px;
 }
 
 .sign-in-icon {
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .input-remember {

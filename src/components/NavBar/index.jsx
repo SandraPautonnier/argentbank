@@ -1,8 +1,10 @@
 import React from 'react';
-import { useNavigate, Navigate, Link  } from 'react-router-dom';
+import { useNavigate, Link  } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginSuccess, logout } from '../../redux/authSlice';
+import { logout } from '../../redux/authSlice';
 import ArgentBankLogo from "../../assets/img/argentBankLogo.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 const NavBar = () => {
 
@@ -29,12 +31,12 @@ const NavBar = () => {
           <div>
             {isAuthenticated ? (
                 <Link className="main-nav-item" onClick={handleLogout}>
-                  <i className="fa fa-user-circle"></i>
+                  <FontAwesomeIcon icon={faUserCircle} />
                   Logout
                 </Link>
               ) : (
                 <Link className="main-nav-item" onClick={() => navigate('/login')}>
-                  <i className="fa fa-user-circle"></i>
+                  <FontAwesomeIcon icon={faUserCircle} />
                   Login
                 </Link>
               )}

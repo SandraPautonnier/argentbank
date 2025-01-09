@@ -239,6 +239,7 @@ body {
   box-sizing: border-box;
   text-align: left;
   margin-bottom: 2rem;
+  border-radius: 5px;
 }
 
 .account-amount {
@@ -275,7 +276,7 @@ body {
 
 .edit-user-content input {
   height: 25px;
-  margin: 10px 10px;
+  margin: 7px 10px;
   
 }
 

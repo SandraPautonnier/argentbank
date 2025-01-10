@@ -61,6 +61,8 @@ const SignIn = () => {
         );
         navigate('/profile');
         
+      } else {
+        alert("L'e-mail ou le mot de passe est incorrect !")
       }
     } catch (erreur) {
       console.error("Erreur :", erreur);

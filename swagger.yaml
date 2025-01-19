@@ -101,6 +101,96 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /transaction/:userId/list:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Transactions API
+      description: API for fetching a transaction
+      #produces:
+       # - application/json
+      responses:
+        '200':
+          description: Transaction retrieved successully
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /transaction:
+    post:
+      tags:
+        - Transaction Module
+      summary: Transaction
+      description: API for Transaction
+      parameters:
+        - in: body
+          name: body
+          description: Transaction Payload
+          required: true
+          schema:
+            $ref: '#/definitions/CreateTransaction'
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Transaction Successfully
+          schema:
+            $ref: '#/definitions/TransactionResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /transaction/:id:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Transactions API
+      description: API for fetching a transaction
+      #produces:
+       # - application/json
+      responses:
+        '200':
+          description: Transaction retrieved successully
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Transactions API
+      description: API for updating a Transaction
+      parameters:
+        - in: body
+          name: body
+          description: Update Transaction attributes
+          required: true
+          schema:
+            $ref: '#/definitions/Transaction'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -156,3 +246,82 @@ definitions:
     properties:
       userName:
         type: string
+  Transaction:
+    properties:
+      id:
+        type: integer
+        description: transaction id
+      date:
+        type: string
+        description: transaction date
+      description:
+        type: string
+        description: transaction description
+      amount:
+        type: integer
+        description: transaction amount
+      balance:
+        type: integer
+        description: transaction balance
+      type:
+        type: integer
+        description: transaction type
+      category:
+        type: integer
+        description: transaction category
+      note:
+        type: string
+        description: transaction note
+  CreateTransaction:
+    properties:
+      userId:
+        type: integer
+        description: transaction userId
+      date:
+        type: string
+        description: transaction date
+      description:
+        type: string
+        description: transaction description
+      amount:
+        type: integer
+        description: transaction amount
+      balance:
+        type: integer
+        description: transaction balance
+      type:
+        type: integer
+        description: transaction type
+      category:
+        type: integer
+        description: transaction category
+      note:
+        type: string
+  TransactionResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+  Category:
+    properties:
+      id:
+        type: integer
+        description: transaction id
+      name:
+        type: string
+        description: transaction name
+  Type:
+    properties:
+      id:
+        type: integer
+        description: transaction id
+      name:
+        type: string
+        description: transaction name
+        
+  
+
+
+        

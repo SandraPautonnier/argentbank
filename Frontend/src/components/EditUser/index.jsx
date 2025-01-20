@@ -11,7 +11,7 @@ const EditUser = () => {
 
   const dispatch = useDispatch();
 
-  // Pour afficher les données utilisateur
+  // Pour afficher les données de l'utilisateur
   const userInfo = async () => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -37,7 +37,6 @@ const EditUser = () => {
       const lastName = data.body?.lastName;
       dispatch(userProfile({ userName, lastName, firstName }))
 
-      //console.log(dataInfo);
     } catch (error) {
       console.error("Erreur :", error);
     }

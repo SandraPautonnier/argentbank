@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userProfile, updateUserName } from "../../redux/userSlice";
 
@@ -13,7 +13,7 @@ const EditUser = () => {
 
   // Pour afficher les données de l'utilisateur
   const userInfo = async () => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token") || localStorage.getItem("token");
     if (!token) {
       setError("Token is missing");
       setLoading(false);
@@ -52,7 +52,7 @@ const EditUser = () => {
   const handleSave = async () => {
     setLoading(true);
     setError("");
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token") || localStorage.getItem("token");
     // Validation pour vérifier si le champ est vide
     if (tempUserName.trim() === "") {
       alert("Le nom d'utilisateur ne peut pas être vide !");

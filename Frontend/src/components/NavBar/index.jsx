@@ -13,7 +13,7 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logout()); // Appelle l'action de déconnexion
+    dispatch(logout()); 
     navigate('/');
   };
 

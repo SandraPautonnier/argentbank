@@ -54,9 +54,9 @@ const userSlice = createSlice({
 
       localStorage.setItem("token", token);
 
-      if (remember) {
+      /*if (remember) {
         sessionStorage.setItem("token", token);
-      }
+      } */
     },
     userProfile: (state, action) => {
       const { userName, firstName, lastName } = action.payload;

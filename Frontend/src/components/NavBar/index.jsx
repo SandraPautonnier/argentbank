@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate, Link  } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../redux/authSlice';
+import { logout } from '../../redux/userSlice';
 import ArgentBankLogo from "../../assets/img/argentBankLogo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 const NavBar = () => {
 
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

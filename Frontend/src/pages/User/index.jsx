@@ -7,6 +7,9 @@ import Footer from "../../components/Footer";
 import Account from "../../components/Account";
 
 const User = () => {
+
+  const token = sessionStorage.getItem("token") || localStorage.getItem("token");
+
   const accounts = [
     {
       title: "Argent Bank Checking (x8349)",
@@ -25,7 +28,7 @@ const User = () => {
     },
   ];
 
-  if (!loginSuccess) {
+  if (!loginSuccess || !token) {
     return <Navigate to="/login" />;
   }
 

@@ -11,7 +11,6 @@ const EditUser = () => {
 
   const dispatch = useDispatch();
 
-  // Pour afficher les données de l'utilisateur
   const userInfo = async () => {
     const token = sessionStorage.getItem("token") || localStorage.getItem("token");
     if (!token) {
@@ -31,7 +30,7 @@ const EditUser = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      //console.log(data.body);
+
       const userName = data.body?.userName;
       const firstName = data.body?.firstName;
       const lastName = data.body?.lastName;
@@ -44,7 +43,6 @@ const EditUser = () => {
 
   userInfo();
 
-  // Pour modifier le nom d'utilisateur
   const handleChange = (e) => {
     setTempUserName(e.target.value);
     setError("");
@@ -53,7 +51,7 @@ const EditUser = () => {
     setLoading(true);
     setError("");
     const token = sessionStorage.getItem("token") || localStorage.getItem("token");
-    // Validation pour vérifier si le champ est vide
+  
     if (tempUserName.trim() === "") {
       alert("Le nom d'utilisateur ne peut pas être vide !");
       setLoading(false);
@@ -77,7 +75,7 @@ const EditUser = () => {
       if (response.ok) {
         dispatch(updateUserName({ userName: tempUserName }));
         alert("Nom d'utilisateur modifié avec succès !");
-        setIsOpen(false); // Referme le mode modification
+        setIsOpen(false); 
       } else {
         throw new Error(data.message || "An error occurred");
       }

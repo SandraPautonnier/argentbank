@@ -49,9 +49,6 @@ const SignIn = () => {
   
       if (reponse.ok) {
         const token = data.body?.token;
- 
-        //console.log("data :", data);
-        //console.log("token :", token);
         
         dispatch(
           loginSuccess({

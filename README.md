@@ -1,8 +1,12 @@
-# React + Vite
+# Projet professionnalisant Openclassrooms : Argent Bank - Banque en ligne
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Contexte fictif : Je suis développeuse front-end chez Argent Bank. Argent Bank est une nouvelle banque en ligne qui souhaite s'imposer dans le secteur bancaire. Je dois donc intégrer les fonctionnalités du site.
 
-Currently, two official plugins are available:
+## Objectif du projet :
+- Intégrer le front-end avec le back-end via des appels API dans une application React
+- Mettre en place le state global avec Redux
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Fonctionnalités réalisées :
+- Connection / Déconnexion de l'utilisateur (gestion des erreurs de connexion)
+- Modification du nom utilisateur via un formulaire (sans pouvoir modifier le nom et le prénom)
+- Réaliser des endpoints supplémentaires via Swagger
